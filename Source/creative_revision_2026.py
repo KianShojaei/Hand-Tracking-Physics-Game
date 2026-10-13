@@ -54,11 +54,11 @@ class Config:
     MIN_TRACKING_CONFIDENCE = 0.5
 
     IMAGE_PATHS = {
-        "ball": "ball.png",
-        "bomb": "bomb.png",
-        "powerup": "powerup.png",
-        "life_powerup": "life_powerup.png",
-        "bonus": "bonus.png",
+        "ball": str(PROJECT_ROOT / "GameImages" / "ball.png"),
+        "bomb": str(PROJECT_ROOT / "GameImages" / "bomb.png"),
+        "powerup": str(PROJECT_ROOT / "GameImages" / "powerup.png"),
+        "life_powerup": str(PROJECT_ROOT / "GameImages" / "life_powerup.png"),
+        "bonus": str(PROJECT_ROOT / "GameImages" / "bonus.png"),
     }
 
     # --- Creative gameplay extensions ---
@@ -115,7 +115,7 @@ def load_rgba_image(path, size):
     if not os.path.exists(path):
         raise FileNotFoundError(
             f"Image file not found: '{path}'.\n"
-            f"Make sure the file is located in the same directory as this script."
+            f"Make sure the file exists at the configured path in the repository's GameImages directory."
         )
     return Image.open(path).resize(size).convert("RGBA")
 
