@@ -1,4 +1,4 @@
-# HandTrackingGame
+# Hand-Tracking Physics Game
 
 A real-time computer-vision interaction experiment in which hand tracking is used to draw temporary barriers and control a physics-based game.
 
@@ -324,7 +324,7 @@ The scripts use the default webcam. Close other applications that may be using t
 ## Project Structure
 
 ```text
-HandTrackingGame/
+Hand-Tracking-Physics-Game/
 ├── GameImages/
 │   ├── ball.png
 │   ├── bomb.png
@@ -430,4 +430,4 @@ The project is particularly useful as a compact example of how a computer-vision
 ---
 
 **Author:** Kian Shojaei  
-**Repository:** [KianShojaei/HandTrackingGame](https://github.com/KianShojaei/HandTrackingGame)
+**Repository:** [KianShojaei/HandTrackingGame](https://github.com/KianShojaei/Hand-Tracking-Physics-Game)
