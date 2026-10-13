@@ -423,11 +423,11 @@ Potential extensions include:
 
 ## Project Context
 
-HandTrackingGame is part of a broader set of experiments exploring real-time computer vision and human-computer interaction.
+Hand-Tracking Physics Game is part of a broader set of experiments exploring real-time computer vision and human-computer interaction.
 
 The project is particularly useful as a compact example of how a computer-vision input stream can be connected to geometry, physics, state management, and interactive feedback in a single application.
 
 ---
 
 **Author:** Kian Shojaei  
-**Repository:** [KianShojaei/HandTrackingGame](https://github.com/KianShojaei/Hand-Tracking-Physics-Game)
+**Repository:** [KianShojaei/Hand-Tracking-Physics-Game](https://github.com/KianShojaei/Hand-Tracking-Physics-Game)
