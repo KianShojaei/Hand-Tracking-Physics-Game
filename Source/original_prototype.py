@@ -4,6 +4,10 @@ import numpy as np
 from collections import deque
 from PIL import Image, ImageDraw, ImageOps
 import time
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+GAME_IMAGES = PROJECT_ROOT / "GameImages"
 
 # Initialize MediaPipe Hands.
 # The prototype uses the default configuration and the index fingertip as its main input.
