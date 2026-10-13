@@ -241,12 +241,15 @@ class HandTracker:
 # ============================================================
 class Game:
     def __init__(self):
+        # Validate local assets before opening camera or MediaPipe resources.
+        self.images = self._load_images()
+
         self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
+            self.cap.release()
             raise RuntimeError("Webcam was not found or is unavailable.")
 
         self.hand_tracker = HandTracker()
-        self.images = self._load_images()
 
         self.canvas_shape = None  # Initialized after the first frame
         self.drawing_canvas = None
