@@ -9,11 +9,14 @@ import os
 import sys
 import time
 from collections import deque
+from pathlib import Path
 
 import cv2
 import mediapipe as mp
 import numpy as np
 from PIL import Image
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 # ============================================================
