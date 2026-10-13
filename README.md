@@ -269,6 +269,58 @@ The revised versions use the following keyboard controls:
 
 The original prototype has a smaller keyboard-control set and is intentionally preserved as the earlier implementation.
 
+## Installation and Setup
+
+### Requirements
+
+- Python 3.10 or a version supported by the installed MediaPipe release
+- A working webcam
+- The Python packages listed in `requirements.txt`
+
+### Install dependencies
+
+Create and activate a virtual environment, then install the dependencies:
+
+```bash
+python -m venv .venv
+```
+
+On Windows:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+On macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the packages:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Run a version
+
+Run one of the scripts from the repository root:
+
+```bash
+python Source/original_prototype.py
+```
+
+Or choose a revised version:
+
+```bash
+python Source/structured_revision_2026.py
+python Source/creative_revision_2026.py
+```
+
+The scripts use the default webcam. Close other applications that may be using the camera if it cannot be opened.
+
 ## Project Structure
 
 ```text
@@ -291,6 +343,8 @@ HandTrackingGame/
 │   ├── original_prototype.py
 │   ├── structured_revision_2026.py
 │   └── creative_revision_2026.py
+├── requirements.txt
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
