@@ -61,12 +61,12 @@ bomb_hit_time = None  # Track the time when the bomb is hit
 lives = 100
 
 # Load images
-ball_image = Image.open('ball.png').resize((2 * ball_radius, 2 * ball_radius)).convert("RGBA")
-bomb_image = Image.open('bomb.png').resize((2 * bomb_radius, 2 * bomb_radius)).convert("RGBA")
-powerup_image = Image.open('powerup.png').resize((2 * powerup_radius, 2 * powerup_radius)).convert("RGBA")
-life_powerup_image = Image.open('life_powerup.png').resize((2 * life_powerup_radius, 2 * life_powerup_radius)).convert(
+ball_image = Image.open(GAME_IMAGES / 'ball.png').resize((2 * ball_radius, 2 * ball_radius)).convert("RGBA")
+bomb_image = Image.open(GAME_IMAGES / 'bomb.png').resize((2 * bomb_radius, 2 * bomb_radius)).convert("RGBA")
+powerup_image = Image.open(GAME_IMAGES / 'powerup.png').resize((2 * powerup_radius, 2 * powerup_radius)).convert("RGBA")
+life_powerup_image = Image.open(GAME_IMAGES / 'life_powerup.png').resize((2 * life_powerup_radius, 2 * life_powerup_radius)).convert(
     "RGBA")
-bonus_image = Image.open('bonus.png').resize((2 * bonus_radius, 2 * bonus_radius)).convert("RGBA")
+bonus_image = Image.open(GAME_IMAGES / 'bonus.png').resize((2 * bonus_radius, 2 * bonus_radius)).convert("RGBA")
 
 
 def calculate_reflection(ball_velocity, line_start, line_end):
