@@ -319,12 +319,18 @@ python Source/structured_revision_2026.py
 python Source/creative_revision_2026.py
 ```
 
-The scripts use the default webcam. Close other applications that may be using the camera if it cannot be opened.
+The scripts use the default webcam. Close other applications that may be using the camera if it cannot be opened. The five required gameplay assets are stored in `GameImages/`; the scripts resolve their paths relative to the repository, so you can launch them from the repository root or another working directory.
 
 ## Project Structure
 
 ```text
 HandTrackingGame/
+├── GameImages/
+│   ├── ball.png
+│   ├── bomb.png
+│   ├── bonus.png
+│   ├── life_powerup.png
+│   └── powerup.png
 ├── GamePlay/
 │   ├── original_prototype.gif
 │   ├── structured_revision.gif
