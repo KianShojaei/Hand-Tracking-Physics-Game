@@ -15,12 +15,79 @@ The project began as a small prototype in 2024 and was revisited in 2026 through
 - **Implementation:** Python with OpenCV, MediaPipe, NumPy, and Pillow
 - **Evolution:** Original prototype → structured revision → creative revision
 
+## Gameplay Demos
+
+The GIFs below provide a quick look at each stage of the project without requiring you to install or run the code.
+
+### Original Prototype — 2024
+
+The first version demonstrates the original webcam-based interaction and the core gameplay loop.
+
+![Gameplay demo of the original HandTrackingGame prototype](GamePlay/original_prototype.gif)
+
+### Structured Revision — 2026
+
+This revision keeps the central interaction while organizing the implementation into more clearly separated components.
+
+![Gameplay demo of the structured HandTrackingGame revision](GamePlay/structured_revision.gif)
+
+### Creative Revision — 2026
+
+The latest version explores additional interaction mechanics, including hand-as-paddle control, a fist-based shield, and richer visual feedback.
+
+![Gameplay demo of the creative HandTrackingGame revision](GamePlay/creative_revision.gif)
+
+## Screenshot Gallery
+
+The following screenshots show selected screens and interactions from the three versions. They complement the animated demos above by making individual interface states and gameplay details easier to inspect.
+
+### Original Prototype
+
+**Start screen**
+
+![Start screen of the original prototype](Image/original_prototype_start_page.png)
+
+**Gameplay**
+
+![Gameplay screen of the original prototype](Image/original_prototype_game_page.png)
+
+**End screen**
+
+![End screen of the original prototype](Image/original_prototype_end_page.png)
+
+### Structured Revision
+
+**Start screen**
+
+![Start screen of the structured revision](Image/structured_revision_start_page.png)
+
+**Gameplay**
+
+![Gameplay screen of the structured revision](Image/structured_revision_game_page.png)
+
+### Creative Revision
+
+**Start screen**
+
+![Start screen of the creative revision](Image/creative_revision_start_page.png)
+
+**Ball interaction — example 1**
+
+![Creative revision showing a ball interaction](Image/creative_revision_ball_hit1.png)
+
+**Ball interaction — example 2**
+
+![Another ball interaction in the creative revision](Image/creative_revision_ball_hit2.png)
+
+**Fist gesture and shield**
+
+![Creative revision showing the fist-based shield interaction](Image/creative_revision_shield_fist.png)
+
 ## Project Demo
 
-A demonstration of the hand-controlled interaction is available in the project's LinkedIn post:
+A demonstration of the hand-controlled interaction is also available in the project's LinkedIn post:
 
-[View the demonstration](https://www.linkedin.com/posts/kianshojaei_mediapipe-opencv-activity-7245463781684723713-Vow7?utm_source=share&utm_medium=member_desktop&rcm=ACoAADXrbU8B6qFFmEzVSm8aFXdvGZGWAb4c0nE)
-
+[View the demonstration on LinkedIn](https://www.linkedin.com/posts/kianshojaei_mediapipe-opencv-activity-7245463781684723713-Vow7?utm_source=share&utm_medium=member_desktop&rcm=ACoAADXrbU8B6qFFmEzVSm8aFXdvGZGWAb4c0nE)
 
 ## Project Evolution
 
@@ -206,18 +273,25 @@ The original prototype has a smaller keyboard-control set and is intentionally p
 
 ```text
 HandTrackingGame/
-│
+├── GamePlay/
+│   ├── original_prototype.gif
+│   ├── structured_revision.gif
+│   └── creative_revision.gif
+├── Image/
+│   ├── creative_revision_ball_hit1.png
+│   ├── creative_revision_ball_hit2.png
+│   ├── creative_revision_shield_fist.png
+│   ├── creative_revision_start_page.png
+│   ├── original_prototype_end_page.png
+│   ├── original_prototype_game_page.png
+│   ├── original_prototype_start_page.png
+│   ├── structured_revision_game_page.png
+│   └── structured_revision_start_page.png
 ├── Source/
 │   ├── original_prototype.py
 │   ├── structured_revision_2026.py
 │   └── creative_revision_2026.py
-│
-├── ball.png
-├── bomb.png
-├── powerup.png
-├── life_powerup.png
-├── bonus.png
-│
+├── LICENSE
 └── README.md
 ```
 
