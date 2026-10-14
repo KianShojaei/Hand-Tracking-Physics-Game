@@ -15,73 +15,84 @@ The project began as a small prototype in 2024 and was revisited in 2026 through
 - **Implementation:** Python with OpenCV, MediaPipe, NumPy, and Pillow
 - **Evolution:** Original prototype → structured revision → creative revision
 
-## Gameplay Demos
+## Version-by-Version Visual Gallery
 
-The GIFs below provide a quick look at each stage of the project without requiring you to install or run the code.
+Each version below includes screenshots with short captions, followed by its gameplay recording. This layout makes it easy to compare the interface and interaction changes without leaving the README.
 
-### Original Prototype — 2024
+### 1. Original Prototype — 2024
 
-The first version demonstrates the original webcam-based interaction and the core gameplay loop.
+**Source:** `Source/original_prototype.py`
 
-![Gameplay demo of the original HandTrackingGame prototype](GamePlay/original_prototype.gif)
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="Image/original_prototype_start_page.png" alt="Original prototype start screen" width="100%" />
+      <br /><sub><b>Start screen</b><br />Initial game screen before play begins.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Image/original_prototype_game_page.png" alt="Original prototype gameplay screen" width="100%" />
+      <br /><sub><b>Gameplay</b><br />Live webcam view with the core game interaction.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="Image/original_prototype_end_page.png" alt="Original prototype end screen" width="100%" />
+      <br /><sub><b>End screen</b><br />The game-over state at the end of a round.</sub>
+    </td>
+  </tr>
+</table>
 
-### Structured Revision — 2026
+**Gameplay recording**
 
-This revision keeps the central interaction while organizing the implementation into more clearly separated components.
+![Gameplay recording of the original prototype](GamePlay/original_prototype.gif)
 
-![Gameplay demo of the structured HandTrackingGame revision](GamePlay/structured_revision.gif)
+### 2. Structured Revision — 2026
 
-### Creative Revision — 2026
+**Source:** `Source/structured_revision_2026.py`
 
-The latest version explores additional interaction mechanics, including hand-as-paddle control, a fist-based shield, and richer visual feedback.
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="Image/structured_revision_start_page.png" alt="Structured revision start screen" width="100%" />
+      <br /><sub><b>Start screen</b><br />The revised entry point to the game.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="Image/structured_revision_game_page.png" alt="Structured revision gameplay screen" width="100%" />
+      <br /><sub><b>Gameplay</b><br />The core interaction in the reorganized implementation.</sub>
+    </td>
+  </tr>
+</table>
 
-![Gameplay demo of the creative HandTrackingGame revision](GamePlay/creative_revision.gif)
+**Gameplay recording**
 
-## Screenshot Gallery
+![Gameplay recording of the structured revision](GamePlay/structured_revision.gif)
 
-The following screenshots show selected screens and interactions from the three versions. They complement the animated demos above by making individual interface states and gameplay details easier to inspect.
+### 3. Creative Revision — 2026
 
-### Original Prototype
+**Source:** `Source/creative_revision_2026.py`
 
-**Start screen**
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Image/creative_revision_start_page.png" alt="Creative revision start screen" width="100%" />
+      <br /><sub><b>Start screen</b><br />Entry screen for the expanded game.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Image/creative_revision_ball_hit1.png" alt="Creative revision ball interaction example one" width="100%" />
+      <br /><sub><b>Ball interaction I</b><br />An example of ball interaction during play.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Image/creative_revision_ball_hit2.png" alt="Creative revision ball interaction example two" width="100%" />
+      <br /><sub><b>Ball interaction II</b><br />A second gameplay interaction example.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Image/creative_revision_shield_fist.png" alt="Creative revision fist-based shield" width="100%" />
+      <br /><sub><b>Fist-based shield</b><br />A gesture-triggered defensive mechanic.</sub>
+    </td>
+  </tr>
+</table>
 
-![Start screen of the original prototype](Image/original_prototype_start_page.png)
+**Gameplay recording**
 
-**Gameplay**
-
-![Gameplay screen of the original prototype](Image/original_prototype_game_page.png)
-
-**End screen**
-
-![End screen of the original prototype](Image/original_prototype_end_page.png)
-
-### Structured Revision
-
-**Start screen**
-
-![Start screen of the structured revision](Image/structured_revision_start_page.png)
-
-**Gameplay**
-
-![Gameplay screen of the structured revision](Image/structured_revision_game_page.png)
-
-### Creative Revision
-
-**Start screen**
-
-![Start screen of the creative revision](Image/creative_revision_start_page.png)
-
-**Ball interaction — example 1**
-
-![Creative revision showing a ball interaction](Image/creative_revision_ball_hit1.png)
-
-**Ball interaction — example 2**
-
-![Another ball interaction in the creative revision](Image/creative_revision_ball_hit2.png)
-
-**Fist gesture and shield**
-
-![Creative revision showing the fist-based shield interaction](Image/creative_revision_shield_fist.png)
+![Gameplay recording of the creative revision](GamePlay/creative_revision.gif)
 
 ## Project Demo
 
