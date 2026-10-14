@@ -4,18 +4,23 @@ import numpy as np
 from collections import deque
 from PIL import Image, ImageDraw, ImageOps
 import time
+from pathlib import Path
 
-# Initialize MediaPipe Hands
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+GAME_IMAGES = PROJECT_ROOT / "GameImages"
+
+# Initialize MediaPipe Hands.
+# The prototype uses the default configuration and the index fingertip as its main input.
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 mp_drawing = mp.solutions.drawing_utils
 
-# Start video capture
+# Open the default webcam used by the original prototype.
 cap = cv2.VideoCapture(0)
 drawing = False
 prev_x, prev_y = None, None
 
-# Create a blank image for drawing
+# Create the drawing canvas after the first frame so its dimensions match the camera.
 canvas = None
 
 # Create a named window and set it to be resizable
@@ -30,7 +35,7 @@ ball_color = (0, 0, 255)  # Red color
 ball_position = np.array([100, 100], dtype=np.int32)
 ball_velocity = np.array([5, 5], dtype=np.float32)
 
-# Queue to store drawing points with timestamps
+# Store each temporary stroke segment together with its creation time.
 points_queue = deque()
 
 # Bonus properties
@@ -60,12 +65,12 @@ bomb_hit_time = None  # Track the time when the bomb is hit
 lives = 100
 
 # Load images
-ball_image = Image.open('ball.png').resize((2 * ball_radius, 2 * ball_radius)).convert("RGBA")
-bomb_image = Image.open('bomb.png').resize((2 * bomb_radius, 2 * bomb_radius)).convert("RGBA")
-powerup_image = Image.open('powerup.png').resize((2 * powerup_radius, 2 * powerup_radius)).convert("RGBA")
-life_powerup_image = Image.open('life_powerup.png').resize((2 * life_powerup_radius, 2 * life_powerup_radius)).convert(
+ball_image = Image.open(GAME_IMAGES / 'ball.png').resize((2 * ball_radius, 2 * ball_radius)).convert("RGBA")
+bomb_image = Image.open(GAME_IMAGES / 'bomb.png').resize((2 * bomb_radius, 2 * bomb_radius)).convert("RGBA")
+powerup_image = Image.open(GAME_IMAGES / 'powerup.png').resize((2 * powerup_radius, 2 * powerup_radius)).convert("RGBA")
+life_powerup_image = Image.open(GAME_IMAGES / 'life_powerup.png').resize((2 * life_powerup_radius, 2 * life_powerup_radius)).convert(
     "RGBA")
-bonus_image = Image.open('bonus.png').resize((2 * bonus_radius, 2 * bonus_radius)).convert("RGBA")
+bonus_image = Image.open(GAME_IMAGES / 'bonus.png').resize((2 * bonus_radius, 2 * bonus_radius)).convert("RGBA")
 
 
 def calculate_reflection(ball_velocity, line_start, line_end):
@@ -121,6 +126,7 @@ while cap.isOpened():
     # Convert the RGB image back to BGR (we use np.array to remove the hand recognizers)
     image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
 
+    # Advance the ball using its current velocity.
     # Update ball position
     ball_position += ball_velocity.astype(np.int32)
 
@@ -130,6 +136,7 @@ while cap.isOpened():
     if ball_position[1] - ball_radius < 0 or ball_position[1] + ball_radius > canvas.shape[0]:
         ball_velocity[1] = -ball_velocity[1]
 
+    # Detect overlap with the temporary drawing, then test its stored segments.
     # Check for collision with drawn lines
     mask = np.zeros_like(canvas, dtype=np.uint8)
     cv2.circle(mask, tuple(ball_position), ball_radius, (255, 255, 255), -1)
@@ -150,6 +157,7 @@ while cap.isOpened():
                     ball_position += (normal_vector * (ball_radius - distance)).astype(np.int32)
                     break
 
+    # Collectibles use circle-to-circle distance checks.
     # Check for collision with bonus
     if np.linalg.norm(ball_position - bonus_position) < ball_radius + bonus_radius:
         score += 1
@@ -180,10 +188,12 @@ while cap.isOpened():
             print("Game Over!")
             break
 
+    # Compose sprites on a separate layer before final rendering.
     # Create a separate layer for the ball
     ball_layer = np.zeros_like(canvas)
     cv2.circle(ball_layer, tuple(ball_position), ball_radius, ball_color, -1)
 
+    # Compose sprites on a separate layer before final rendering.
     # Create a separate layer for the ball, bonus, power-up, and bomb
     ball_layer = Image.new("RGBA", (canvas.shape[1], canvas.shape[0]), (0, 0, 0, 0))
     ball_layer.paste(ball_image, (ball_position[0] - ball_radius, ball_position[1] - ball_radius), ball_image)
@@ -194,6 +204,7 @@ while cap.isOpened():
     if life_powerup_visible:
         ball_layer.paste(life_powerup_image, (life_powerup_position[0] - life_powerup_radius, life_powerup_position[1] - life_powerup_radius), life_powerup_image)
 
+    # Remove stroke segments after their short lifetime.
     # Erase lines after a delay
     current_time = time.time()
     while points_queue and current_time - points_queue[0][2] > 0.2:
@@ -221,6 +232,7 @@ while cap.isOpened():
     if life_powerup_visible and current_time > life_powerup_timer - 10 + life_powerup_duration:
         life_powerup_visible = False
 
+    # Combine the camera frame, drawing canvas, and game sprites.
     # Combine the original image, canvas, and ball layer
     combined_image = cv2.addWeighted(image, 0.5, canvas, 0.5, 0)
     combined_image = cv2.addWeighted(combined_image, 1, ball_layer, 1, 0)

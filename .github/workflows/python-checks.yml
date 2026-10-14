@@ -1,0 +1,54 @@
+name: Python checks
+
+on:
+  push:
+    branches:
+      - main
+      - professional-refactor
+  pull_request:
+    branches:
+      - main
+      - professional-refactor
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Compile Python source files
+        run: python -m py_compile Source/original_prototype.py Source/structured_revision_2026.py Source/creative_revision_2026.py
+
+      - name: Verify required game assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          asset_dir = Path("GameImages")
+          required_assets = (
+              "ball.png",
+              "bomb.png",
+              "powerup.png",
+              "life_powerup.png",
+              "bonus.png",
+          )
+
+          missing = [name for name in required_assets if not (asset_dir / name).is_file()]
+          if missing:
+              raise SystemExit(f"Missing game assets in {asset_dir}: {', '.join(missing)}")
+
+          print(f"Verified {len(required_assets)} required game assets.")
+          PY
